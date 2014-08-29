@@ -1,0 +1,5 @@
+<h2>Formulaire d'article</h2>
+	<form method="POST">
+		{{ form_widget(form) }}
+		<input type="submit" />
+	</form>

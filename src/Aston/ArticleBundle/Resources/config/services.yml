@@ -1,0 +1,7 @@
+parameters:
+#    aston_article.example.class: Aston\ArticleBundle\Example
+
+services:
+#    aston_article.example:
+#        class: %aston_article.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

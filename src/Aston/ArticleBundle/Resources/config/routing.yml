@@ -1,0 +1,26 @@
+aston_article_homepage:
+    path:     /
+    defaults: { _controller: AstonArticleBundle:Article:index }
+    
+aston_article_voir:
+    pattern:  /voir/{id}
+    defaults: { _controller: AstonArticleBundle:Article:voir }
+    requirements:
+            id: \d+
+    
+aston_article_ajouter:
+    pattern:  /ajouter
+    defaults: { _controller: AstonArticleBundle:Article:ajouter }
+    
+aston_article_modifier:
+    pattern:  /modifier/{id}
+    defaults: { _controller: AstonArticleBundle:Article:modifier }
+    requirements:
+            id: \d+
+            
+aston_article_supprimer:
+    pattern:  /supprimer/{id}
+    defaults: { _controller: AstonArticleBundle:Article:supprimer }
+    requirements:
+            id: \d+
+

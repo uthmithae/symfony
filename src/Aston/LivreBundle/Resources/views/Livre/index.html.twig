@@ -1,0 +1,26 @@
+{# extends "AstonLivreBundle::layout.html.twig" #}
+{% extends '::base.html.twig' %}
+{% block title %}{{ parent() }} - Accueil{% endblock %}
+{% block stylesheets %}{{ parent() }}
+{%  stylesheets '@AstonLivreBundle/Resources/public/css/*' filter='cssrewrite' %}
+	<link href="{{ asset_url }}" rel="stylesheet" /> 
+{%  endstylesheets %}
+{% endblock %}
+
+
+{% block logo %}{{ parent() }}{% endblock %}
+{% block menu %}<div class="menu">{{ parent() }} <a href="{{ path('aston_livre_ajouter') }}">Ajout Livre</a> </div>{% endblock %}
+{% block header %}<h1>Liste de Livres</h1>{% endblock %}
+{% block content %}
+	{# <pre>{{dump(livres)}}</pre> #}
+		{% for item in livres %}
+			<h2><a href ="{{ path('aston_livre_voir', {'id': item.id}) }}">{{item.titre}}</a></h2>
+			<p class="subtitle">Par {{item.auteur}}, le {{item.date|date('d/m/y à H:i')}}<p>
+			<img src="{{ asset('bundles/astonlivre/images/' ~ item.image) }}" alt="logo" /> 
+			<p>{{item.message}}</p>
+			<a href ="{{ path('aston_livre_modifier', {'id': item.id}) }}">Editer</a>
+			<a href ="{{ path('aston_livre_supprimer', {'id': item.id}) }}">Supprimer</a>
+			<p>-------------------</p>
+		{% endfor %}
+{% endblock %}
+{% block footer %}<p>Des livres pour tous</p>{% endblock %}

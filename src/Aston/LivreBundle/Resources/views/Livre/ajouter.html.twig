@@ -1,0 +1,18 @@
+{% extends '::base.html.twig' %}
+{% block title %}{{ parent() }} - Ajout{% endblock %}
+{% block stylesheets %}{{ parent() }}
+{%  stylesheets '@AstonLivreBundle/Resources/public/css/*' filter='cssrewrite' %}
+	<link href="{{ asset_url }}" rel="stylesheet" /> 
+{%  endstylesheets %}
+{% endblock %}
+
+
+{% block logo %}{{ parent() }}{% endblock %}
+{% block menu %}<div class="menu">{{ parent() }} <a href="{{ path('aston_livre_ajouter') }}">Ajout Livre</a> </div>{% endblock %}
+{% block header %}<h1>Ajout de Livres</h1>{% endblock %}
+{% block content %}
+	<div class="formulaire">
+		{% include "AstonLivreBundle:Livre:formulaire.html.twig" %}
+	</div>
+{% endblock %}
+{% block footer %}<p>Des livres pour tous</p>{% endblock %}

@@ -1,0 +1,26 @@
+aston_livre_homepage:
+    pattern:     /
+    defaults: { _controller: AstonLivreBundle:Livre:index }
+
+aston_livre_voir:
+    pattern:  /voir/{id}
+    defaults: { _controller: AstonLivreBundle:Livre:voir }
+    requirements:
+            id: \d+
+    
+aston_livre_ajouter:
+    pattern:  /ajouter
+    defaults: { _controller: AstonLivreBundle:Livre:ajouter }
+    
+aston_livre_modifier:
+    pattern:  /modifier/{id}
+    defaults: { _controller: AstonLivreBundle:Livre:modifier }
+    requirements:
+            id: \d+
+            
+aston_livre_supprimer:
+    pattern:  /supprimer/{id}
+    defaults: { _controller: AstonLivreBundle:Livre:supprimer }
+    requirements:
+            id: \d+
+

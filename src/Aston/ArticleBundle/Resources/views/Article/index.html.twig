@@ -1,0 +1,26 @@
+{# extends "AstonArticleBundle::layout.html.twig" #}
+{% extends '::base.html.twig' %}
+{% block title %}{{ parent() }} - Accueil{% endblock %}
+{% block stylesheets %}{{ parent() }}
+{%  stylesheets '@AstonArticleBundle/Resources/public/css/*' filter='cssrewrite' %}
+	<link href="{{ asset_url }}" rel="stylesheet" /> 
+{%  endstylesheets %}
+{% endblock %}
+
+
+{% block logo %}{{ parent() }}{% endblock %}
+{% block menu %}<div class="menu">{{ parent() }} <a href="{{ path('aston_article_ajouter') }}">Ajout Article</a> </div>{% endblock %}
+{% block header %}<h1>Liste d'Articles</h1>{% endblock %}
+{% block content %}
+	{# <pre>{{dump(articles)}}</pre> #}
+		{% for item in articles %}
+			<h2><a href ="{{ path('aston_article_voir', {'id': item.id}) }}">{{item.titre}}</a></h2>
+			<p class="subtitle">Par {{item.auteur}}, le {{item.date|date('d/m/y à H:i')}}<p>
+			<img src="{{ asset('bundles/astonarticle/images/' ~ item.image) }}" alt="logo" /> 
+			<p>{{item.message}}</p>
+			<a href ="{{ path('aston_article_modifier', {'id': item.id}) }}">Editer</a>
+			<a href ="{{ path('aston_article_supprimer', {'id': item.id}) }}">Supprimer</a>
+			<p>-------------------</p>
+		{% endfor %}
+{% endblock %}
+{% block footer %}<p>Les méthodes et les outils des professionnels expliqués à tous</p>{% endblock %}

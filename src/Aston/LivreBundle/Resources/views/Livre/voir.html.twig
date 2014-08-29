@@ -1,0 +1,20 @@
+{% extends '::base.html.twig' %}
+{% block title %}{{ parent() }} - Livre{% endblock %}
+{% block stylesheets %}{{ parent() }}
+{%  stylesheets '@AstonLivreBundle/Resources/public/css/*' filter='cssrewrite' %}
+	<link href="{{ asset_url }}" rel="stylesheet" /> 
+{%  endstylesheets %}
+{% endblock %}
+
+
+{% block logo %}{{ parent() }}{% endblock %}
+{% block menu %}<div class="menu">{{ parent() }} <a href="{{ path('aston_livre_ajouter') }}">Ajout Livre</a> </div>{% endblock %}
+{% block header %}<h1>{{livre.titre}} {{livre.id}}</h1>{% endblock %}
+{% block content %}
+	Par {{livre.auteur}}, le {{livre.date|date('d/m/Y')}}
+	<a href ="{{ path('aston_livre_modifier', {'id': livre.id}) }}">Editer</a>
+	<a href ="{{ path('aston_livre_supprimer', {'id': livre.id}) }}">Supprimer</a>
+	<p><img src="{{ asset('bundles/astonlivre/images/' ~ livre.image) }}" alt="logo" /></p>
+	<p>{{livre.message}}</p>
+{% endblock %}
+{% block footer %}<p>Des livres pour tous</p>{% endblock %}

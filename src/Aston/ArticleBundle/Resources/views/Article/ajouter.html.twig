@@ -1,0 +1,19 @@
+{% extends "AstonArticleBundle::layout.html.twig" %}
+{% block title %}{{ parent() }} - Ajout{% endblock %}
+{% block stylesheets %}{{ parent() }}
+{%  stylesheets '@AstonArticleBundle/Resources/public/css/*' filter='cssrewrite' %}
+	<link href="{{ asset_url }}" rel="stylesheet" /> 
+{%  endstylesheets %}
+{% endblock %}
+
+
+{% block logo %}{{ parent() }}{% endblock %}
+{% block menu %}<div class="menu">{{ parent() }} <a href="{{ path('aston_article_ajouter') }}">Ajout Article</a> </div>{% endblock %}
+{% block login %}{{ parent() }}{% endblock %}
+{% block header %}<h1>Ajout d'Article</h1>{% endblock %}
+{% block content %}
+	<div class="formulaire">
+		{% include "AstonArticleBundle:Article:formulaire.html.twig" %}
+	</div>
+{% endblock %}
+{% block footer %}<p>Les méthodes et les outils des professionnels expliqués à tous</p>{% endblock %}

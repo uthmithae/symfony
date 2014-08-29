@@ -1,0 +1,17 @@
+{% extends '::base.html.twig' %}
+{% block title %}{{ parent() }} - Suppression{% endblock %}
+{% block stylesheets %}{{ parent() }}
+{%  stylesheets '@AstonLivreBundle/Resources/public/css/*' filter='cssrewrite' %}
+	<link href="{{ asset_url }}" rel="stylesheet" /> 
+{%  endstylesheets %}
+{% endblock %}
+
+
+{% block logo %}{{ parent() }}{% endblock %}
+{% block menu %}<div class="menu">{{ parent() }} <a href="{{ path('aston_livre_ajouter') }}">Ajout Livre</a> </div>{% endblock %}
+{% block header %}<h1>Confirmation de Suppression</h1>{% endblock %}
+{% block content %}
+	<p><code>Le livre a bien été supprimé</code></p>
+	<p><a href="{{ path('aston_livre_homepage') }}">Retour à l'accueil</a></p>
+{% endblock %}
+{% block footer %}<p>Des livres pour tous</p>{% endblock %}

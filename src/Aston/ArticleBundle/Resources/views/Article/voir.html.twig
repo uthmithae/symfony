@@ -1,0 +1,20 @@
+{% extends '::base.html.twig' %}
+{% block title %}{{ parent() }} - Article{% endblock %}
+{% block stylesheets %}{{ parent() }}
+{%  stylesheets '@AstonArticleBundle/Resources/public/css/*' filter='cssrewrite' %}
+	<link href="{{ asset_url }}" rel="stylesheet" /> 
+{%  endstylesheets %}
+{% endblock %}
+
+
+{% block logo %}{{ parent() }}{% endblock %}
+{% block menu %}<div class="menu">{{ parent() }} <a href="{{ path('aston_article_ajouter') }}">Ajout Article</a> </div>{% endblock %}
+{% block header %}<h1>{{article.titre}} {{article.id}}</h1>{% endblock %}
+{% block content %}
+	Par {{article.auteur}}, le {{article.date|date('d/m/Y')}}
+	<a href ="{{ path('aston_article_modifier', {'id': article.id}) }}">Editer</a>
+	<a href ="{{ path('aston_article_supprimer', {'id': article.id}) }}">Supprimer</a>
+	<p><img src="{{ asset('bundles/astonarticle/images/' ~ article.image) }}" alt="logo" /></p>
+	<p>{{article.message}}</p>
+{% endblock %}
+{% block footer %}<p>Les méthodes et les outils des professionnels expliqués à tous</p>{% endblock %}
